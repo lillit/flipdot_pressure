@@ -1,0 +1,34 @@
+int analogOne = A0; 
+int analogTwo = A1;
+int sensorValueOne = 0; 
+int sensorValueTwo = 0; 
+int flip=11; 
+int flop=10;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(flip,OUTPUT); 
+  pinMode(flop,OUTPUT); 
+}
+
+void loop() {
+    sensorValueOne = analogRead(analogOne);
+    Serial.print("Analog One = ");
+    Serial.println(sensorValueOne);
+    delay(500);
+  
+    sensorValueTwo = analogRead(analogTwo);
+    Serial.print("Analog Two = ");
+    Serial.println(sensorValueTwo);
+    delay(500);
+    
+    if ((sensorValueOne >= -50) && (sensorValueOne <= 50)){
+      digitalWrite(flip,HIGH);
+      Serial.println("flip");
+    }
+    else {
+      digitalWrite(flop,LOW);
+      Serial.println("flop");
+    }
+}
+  
